@@ -1,0 +1,15 @@
+mt:
+  estados: [q0, q1, q2, q_si, q_no]
+  alfabeto: ['0', '1', 'B']
+  estado_inicial: q0
+  blanco: B
+  transiciones:
+    - q0 0 R q0
+    - q0 1 R q1
+    - q0 B S q_si
+    - q1 0 R q2
+    - q1 1 R q0
+    - q1 B S q_no
+    - q2 0 R q1
+    - q2 1 R q2
+    - q2 B S q_no

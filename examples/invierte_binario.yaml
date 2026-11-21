@@ -1,0 +1,38 @@
+mt:
+  estados:
+    [q0, q_sep, q_find, q_c0, q_c1, q_back, q_cleanup, q_erase_r, q_halt]
+  alfabeto: ['0', '1', 'B', 'X', 'Y', 'Z']
+  estado_inicial: q0
+  blanco: B
+  transiciones:
+    - q0 0 R q0
+    - q0 1 R q0
+    - q0 B Z q_sep
+    - q_sep Z L q_find
+    - q_find X L q_find
+    - q_find Y L q_find
+    - q_find 0 X q_c0
+    - q_find 1 Y q_c1
+    - q_find B R q_cleanup
+    - q_c0 X R q_c0
+    - q_c0 Y R q_c0
+    - q_c0 0 R q_c0
+    - q_c0 1 R q_c0
+    - q_c0 Z R q_c0
+    - q_c0 B 0 q_back
+    - q_c1 X R q_c1
+    - q_c1 Y R q_c1
+    - q_c1 0 R q_c1
+    - q_c1 1 R q_c1
+    - q_c1 Z R q_c1
+    - q_c1 B 1 q_back
+    - q_back 0 L q_back
+    - q_back 1 L q_back
+    - q_back Z L q_find
+    - q_cleanup X B q_erase_r
+    - q_cleanup Y B q_erase_r
+    - q_cleanup Z B q_erase_r
+    - q_cleanup 0 S q_halt
+    - q_cleanup 1 S q_halt
+    - q_cleanup B S q_halt
+    - q_erase_r B R q_cleanup
