@@ -1,0 +1,7 @@
+services:
+  mt:
+    build: .
+    image: mt-sim
+    init: true
+    volumes:
+      - .:/datos:ro
